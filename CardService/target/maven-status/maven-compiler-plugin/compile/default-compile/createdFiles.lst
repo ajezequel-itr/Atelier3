@@ -1,0 +1,5 @@
+com/sp/repository/CardRepository.class
+com/sp/rest/CardRestController.class
+com/sp/SpAppCard.class
+com/sp/model/Card.class
+com/sp/service/CardService.class
