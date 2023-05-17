@@ -11,8 +11,11 @@ public class CardDTO {
 	private int value;
 	private String description;
 	private String imgUrl;
+	private int ownerId;
+	private int id;
 	
-	public CardDTO(String name, String spn, int spv, int hp, int atk, int def, int eng, int value, String desc, String img) {
+	public CardDTO(String name, String spn, int spv, int hp, int atk, 
+			int def, int eng, int value, String desc, String img, int oId) {
 		this.name = name;
 		this.superPowerName = spn;
 		this.superPowerValue = spv;
@@ -23,6 +26,7 @@ public class CardDTO {
 		this.value = value;
 		this.description = desc;
 		this.imgUrl = img;
+		this.ownerId = oId;
 	}
 
 	public String getName() {
@@ -105,5 +109,15 @@ public class CardDTO {
 		this.imgUrl = imgUrl;
 	}
 	
+	public int getOwnerId() {
+		return this.ownerId;
+	}
 	
+	public void setOwnerId(int id) {
+		this.ownerId = id;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
 }
