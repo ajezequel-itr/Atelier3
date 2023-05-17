@@ -25,11 +25,15 @@ public class CardService {
 	@Autowired
 	CardRepository cardRepo;
 	
+	// ============= ADD =============
+	
 	public void addCard(Card card) {cardRepo.save(card);}
 	
 	public void addCards(Iterable<Card> cards) {cardRepo.saveAll(cards);}
 	
-	public Card getCard(int id) {
+	// ============= GET =============
+	
+	public Card getCard(int id) { //Card by id
 		Optional<Card> cOpt = cardRepo.findById(id);
 		if (cOpt.isPresent()) {
 			return cOpt.get();
@@ -38,13 +42,9 @@ public class CardService {
 		}
 	}
 	
-	public Card getCard(String name) {
-		Optional<Card> cOpt = cardRepo.findByName(name);
-		if (cOpt.isPresent()) {
-			return cOpt.get();
-		} else {
-			return null;
-		}
+	public Iterable<Card> getCard(String name) { //Card by name
+		Iterable<Card> cards = cardRepo.findAllByName(name);
+		return cards;
 	}
 	
 	public Set<Integer> create5RandCard(int userId) { // A AMELIORER
@@ -63,7 +63,34 @@ public class CardService {
 	
 	public Iterable<Card> getAllCards(){return cardRepo.findAll();}
 	
-	public void delCard(int id) {cardRepo.deleteById(id);}
+	// ============= UPDATE =============
 	
-	public void delCard(Card c) {cardRepo.delete(c);}
+	public void udpateCardOwner(Card card, int ownerId) { //Update owner
+		card.setOwnerId(ownerId);
+		cardRepo.save(card);
+	}
+	
+	public void udpateCardValue(int idCard, int value) { //Update owner
+		Card card = getCard(idCard);
+		card.setValue(value);
+		cardRepo.save(card);
+	}
+	
+	// ============= DELETE =============
+	
+	public void delCard(int id) {cardRepo.deleteById(id);} // Delete by id
+	
+	public void delCard(Card c) {cardRepo.delete(c);} //Delete by object
+	
+	// ============= DTO =============
+	
+	public Card DTOConvert(CardDTO c) {
+		int id = c.getId();
+		Optional<Card> cOpt = cardRepo.findById(id);
+		if (cOpt.isPresent()) {
+			return cOpt.get();
+		} else {
+			return null;
+		}
+	}
 }

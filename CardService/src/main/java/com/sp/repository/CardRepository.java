@@ -9,5 +9,7 @@ public interface CardRepository extends CrudRepository<Card, Integer> {
 	
 	public Optional<Card> findByName(String name);
 	
-	public Iterable<Card> findBySuperPowerName(String superPowerName);
+	public Iterable<Card> findAllByName(String name);
+	
+	public Iterable<Card> findAllBySuperPowerName(String superPowerName);
 }

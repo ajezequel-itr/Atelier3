@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.sp.model.Card;
+import com.sp.model.CardDTO;
 import com.sp.service.CardService;
 
 @RestController
@@ -31,9 +32,9 @@ public class CardRestController {
     }
 	
 	@RequestMapping(method=RequestMethod.GET,value="/card/search/{name}")
-    public Card getCardByName(@PathVariable String name) {
-        Card c = cardServ.getCard(name);
-        return c;
+    public Iterable<Card> getCardByName(@PathVariable String name) {
+       	Iterable<Card> cards = cardServ.getCard(name);
+        return cards;
     }
 	/*
 	@RequestMapping(method=RequestMethod.PUT,value="/card/{id}")
@@ -50,7 +51,13 @@ public class CardRestController {
     }
 	
 	@RequestMapping(method=RequestMethod.POST,value="/card")
-    public void addCard(@RequestBody Card c) {
-        cardServ.addCard(c);
+    public void addCard(@RequestBody CardDTO c) {
+        cardServ.addCard(cardServ.DTOConvert(c));
     }
+	
+	@RequestMapping(method=RequestMethod.PUT, value="/card")
+	public void updateCardOwner(@RequestBody CardDTO c, int ownerId) {
+		Card card = cardServ.DTOConvert(c);
+		cardServ.udpateCardOwner(card, ownerId);
+	}
 }
