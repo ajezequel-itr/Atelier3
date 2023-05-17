@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Trading Cards !</title>
+		<link rel="stylesheet" href="css/display.css">
+		<link rel="stylesheet" href="css/header.css">
+	</head>
+	
+	<body onload="fetchCards()">
+		<header id="header"></header>
+		<script type="text/javascript" src="js/header.js"></script>
+		
+		<div id="cardContainer">
+			<template id="cardTemplate">
+				<div class="card">
+					<img class="cardImg" src="" alt="">
+					
+					<div id="info">
+						<p id="name"></p>
+						<p id="description"></p>
+						<p id="superPower"></p>
+					</div>
+					
+					<div id="stats">
+						<p id="hp"></p>
+					</div>
+					
+					<button id="cardBtn"></button>
+				</div>
+			</template>
+		</div>
+		
+		<script type="text/javascript" src="js/display.js"></script>
+	</body>
+</html>

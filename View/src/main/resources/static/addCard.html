@@ -1,0 +1,61 @@
+<!DOCTYPE="html">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/addCard.css">
+		<link rel="stylesheet" href="css/header.css">
+	</head>
+	
+	<body>
+		<header id="header"></header>
+		
+		<form id="cardForm">
+			<div>
+		        <label for="name">Name :</label>
+		        <input type="text" id="name" name="name" maxlength="20" required>
+	     	</div>
+	     	<div>
+		        <label for="description">Card description :</label>
+		        <input type="text" id="description" name="description" maxlength="100" required>
+	     	</div>
+	     	<div>
+		        <label for="familyName">Super Power Name :</label>
+		        <input type="text" id="superPowerName" name="superPowerName" required maxlength="20">
+	     	</div>
+	     	<div> STATS
+		     	<div>
+			        <label for="hp">Health points :</label>
+			        <input type="number" max="100" min="10" id="hp" name="hp" required>
+		     	</div>
+		     	<div>
+			        <label for="hp">Attack :</label>
+			        <input type="number" max="100" min="10" id="atk" name="atk" required>
+		     	</div>
+		     	<div>
+			        <label for="hp">Defense :</label>
+			        <input type="number" max="100" min="10" id="def" name="def" required>
+		     	</div>
+		     	<div>
+			        <label for="hp">Energy :</label>
+			        <input type="number" max="100" min="10" id="eng" name="eng" required>
+		     	</div>
+	     	</div>
+	     	<div>
+		        <label for="imgUrl">Card image path :</label>
+		        <input type="text" id="imgUrl" name="imgUrl" required>
+	     	</div>
+	     	<div>
+		        <label for="value">value (€) :</label>
+		        <input type="number" max="100" min="10" id="value" name="value" required>
+	     	</div>
+	     	<div>
+		        <label for="ownerId">TEMPORAIRE ownerID :</label>
+		        <input type="number" max="100" min="1" id="ownerId" name="ownerId" required>
+	     	</div>
+	     	<button type="submit">Submit</button>
+		</form>
+		
+		<script type="text/javascript" src="js/addCard.js"></script>
+		<script type="text/javascript" src="js/header.js"></script>
+	</body>
+</html>
