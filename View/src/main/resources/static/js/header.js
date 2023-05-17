@@ -1,3 +1,4 @@
+const userId = parseInt(localStorage.getItem("userId"));
 
 var xhr = new XMLHttpRequest();
 var url = "header.html";
@@ -17,15 +18,18 @@ function logout() {
   localStorage.setItem('userId', '-1');
 
   // Rediriger l'utilisateur vers une autre page ou effectuer d'autres actions de déconnexion si nécessaire
-  window.location.href = '/static/login.html'; 
+  window.location.href = 'login.html';
 }
 
   function loadAdd() {
-	//Verif connection !!
-	window.location.href = "addCard.html"
+	if (userId != -1){
+		window.location.href = "addCard.html"
+	}
+	
 }
 
 function loadBuy() {
-	//Verif connection !!
-	window.location.href = "browse.html"
+	if (userId != -1){
+		window.location.href = "browse.html"
+	}
 }

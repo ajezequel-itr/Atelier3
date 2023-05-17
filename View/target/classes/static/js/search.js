@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
 async function load() {
-	const response = await fetch("/card/"+id);
+	const response = await fetch("127.0.0.1:8888/card/"+id);
 	const card = await response.json();
 	const cardItem = cardTemplate.content.cloneNode(true);
 	cardItem.querySelector(".card img").src = card.imgUrl;

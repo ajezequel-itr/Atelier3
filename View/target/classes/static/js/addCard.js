@@ -5,6 +5,9 @@ form.addEventListener("submit", async (event) => {
     const formData = new FormData(form);
     const data = {};
     formData.forEach((value, key) => data[key] = value); //Format formData for JSON Stringify
+	//formData = Object.assign(formData, {ownerId : parseInt(localStorage.getItem("userId"))})
+	data["ownerId"] = parseInt(localStorage.getItem("userId"));
+	console.log(formData)
     console.log(JSON.stringify(data));
     const response = await fetch("/card", {
         method: 'POST',
@@ -15,6 +18,7 @@ form.addEventListener("submit", async (event) => {
     if (response.ok) {
         //const jsonResponse = await response.json();
         console.log("Successfully added card");
+		window.location.href = "index.html"
     } else {
         console.error('Erreur : ${response.status} : ${response.statusText}');
     }

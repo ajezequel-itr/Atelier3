@@ -1,20 +1,24 @@
 
 console.log("DEHORS")
 
+const logBtn = document.querySelector('#userForm #login');
+const regBtn = document.querySelector('#userForm #register');
 const form = document.querySelector('#userForm');
 
-form.addEventListener('submit', (event) => {
+logBtn.addEventListener('click', (event) => {
     event.preventDefault();
     console.log("DEDANS")
     const formData = new FormData(form);
 
     let user = {
-        name: formData.get('username'),
+        username: formData.get('username'),
         password: formData.get('password')
     };
 
+	console.log(JSON.stringify(user))
+
     //Post Api
-    let urlPost="127.0.0.1:8080/user"; 
+    let urlPost="/login"; 
     let context =   {
                         method: 'POST',
                         headers: {
@@ -27,9 +31,12 @@ form.addEventListener('submit', (event) => {
     fetch(urlPost,context)
         .then(response => response.json())
         .then(response => {
-            const id = JSON.stringify(response);
-            localStorage.setItem("userId",id)
-
+            //const id = JSON.stringify(response);
+			const id = response;
+			console.log(response);
+			console.log(id);
+            localStorage.setItem("userId",id);
+			window.location.href = "index.html"
         })
         .catch(error => err_callback(error));
 });
@@ -37,3 +44,29 @@ form.addEventListener('submit', (event) => {
 function err_callback(error){
     console.log(error);
 }
+
+
+regBtn.addEventListener("click",(event)=>{
+	event.preventDefault();
+	const formData = new FormData(form);
+	let user = {
+        username: formData.get('username'),
+        password: formData.get('password')
+    };
+	fetch('/register', {
+        method: 'POST',
+        headers: {
+
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user) 
+    })
+    .then(response => response.json())
+    .then(data => {
+        //console.log(data.message);
+		window.location.href = "index.html"
+    })
+    .catch(error => {
+        console.error(error);
+    });
+})
