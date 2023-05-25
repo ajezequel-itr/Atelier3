@@ -36,6 +36,7 @@ public class UserRestControlleur {
 	
 	@RequestMapping(method=RequestMethod.PUT,value="/wallet")
 	public void changeWallet(@RequestBody UserDB user, int amount) {
+		int amount = uService.getWallet(user);
 		uService.changeWallet(user, amount);
 	}
 	
