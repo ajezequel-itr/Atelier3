@@ -1,5 +1,0 @@
-com/sp/model/UserDB.class
-com/sp/repository/UserRepository.class
-com/sp/rest/UserRestControlleur.class
-com/sp/service/UserService.class
-com/sp/MicroUserApplication.class
