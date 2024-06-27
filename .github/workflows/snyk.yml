@@ -9,11 +9,11 @@ jobs:
     environment: Dev
     steps:
       - uses: actions/checkout@master
-      - run: ls -l /github/workspace
+      - run: ls -l ${{ github.workspace }}
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven-3-jdk-22@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
         with:
           command: monitor
-          args: --severity-threshold=high
+          args: --severity-threshold=high --workdir ${{ github.workspace }}
