@@ -16,4 +16,4 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
         with:
           command: monitor
-          args: --severity-threshold=high --workdir ${{ github.workspace }}
+          args: --severity-threshold=high --workdir ${{ github.workspace }}/CardService
