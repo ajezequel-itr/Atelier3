@@ -9,6 +9,7 @@ jobs:
     environment: Dev
     steps:
       - uses: actions/checkout@master
+      - run: ls -l /github/workspace
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven-3-jdk-22@master
         env:
