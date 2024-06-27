@@ -11,9 +11,8 @@ jobs:
       - uses: actions/checkout@master
       - run: ls -l ${{ github.workspace }}
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/maven-3-jdk-22@master
+        uses: snyk/actions/maven@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
         with:
-          command: monitor
-          args: --severity-threshold=high --workdir ${{ github.workspace }}/CardService
+          args: --severity-threshold=high
